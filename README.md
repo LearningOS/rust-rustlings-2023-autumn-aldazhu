@@ -39,7 +39,32 @@ curl -L https://raw.githubusercontent.com/rust-lang/rustlings/main/install.sh | 
 
 This will install Rustlings and give you access to the `rustlings` command. Run it to get started!
 
-### Nix
+### NixReading symbols from a.out...
+(gdb) list
+1       #include<stdio.h>
+2
+3       int main()
+4       {
+5               printf("hello, world!\n");
+6       }
+(gdb) l
+Line number 7 out of range; hello_world.c has 6 lines.
+(gdb) run
+Starting program: /home/wuming/myProject/hello/a.out
+hello, world!
+[Inferior 1 (process 6283) exited normally]
+(gdb) break 3
+Breakpoint 1 at 0x8001149: file hello_world.c, line 4.
+(gdb) info breakpoints
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000000008001149 in main at hello_world.c:4
+(gdb) b 5
+Breakpoint 2 at 0x8001151: file hello_world.c, line 5.
+(gdb) i b
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000000008001149 in main at hello_world.c:4
+2       breakpoint     keep y   0x0000000008001151 in main at hello_world.c:5
+(gdb)
 
 Basically: Clone the repository at the latest tag, finally run `nix develop` or `nix-shell`.
 
